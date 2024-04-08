@@ -1,0 +1,95 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+
+
+
+
+int leftMostOneRow(vector<vector<int> > &V){
+
+    int leftMostOne = -1;
+    int maxOnesRow = -1;
+    int j=V[0].size()-1;
+
+    while(j>=0; && V[0][j]==1){
+        leftMostOne = j;
+        maxOnesRow = 0;
+        j--;
+    }
+
+    for(int i=0; i<V.size(); i++){
+
+        while(j>=0 && V[i][j]==1){
+            leftMostOne = j;
+            j--;
+            maxOnesRow = i;
+        }
+    }
+    return maxOnesRow;
+}
+
+int main(){
+
+    int n,m; 
+    cin>>n>>m;
+
+    vector <vector<int> > vec(n,vector<int> (m));
+
+    for(int i=0; i<n; i++){
+        for(int j=0; j<m; j++){
+            cin>>vec[i][i];
+        }
+    }
+
+    int result = leftMostOneRow(vec);
+    cout<<result<<endl;
+
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// int maximumOnesrow(vector<vector<int> > &V){
+
+//     int maxOnes = INT_MIN;
+//     int maxOneRow = -1;
+//     int columns = V[0].size(); // column size
+
+//     for(int i=0; <V.size(); i++){
+//         for(int j=0; j<V.size(); j++){
+//             if(V[i][j] == 1){
+//                 int numberOfOnes = column - j;
+//                 if(numberOfOnes > maxOnes){
+//                     maxOnes = numberOfOnes;
+//                     maxOnes = i;
+//                 }
+//             }
+//         }
+//     }
+
+//     return maxOneRow;
+// }
